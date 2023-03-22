@@ -1,3 +1,9 @@
+$navbar-height: 80px;
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -9,10 +15,6 @@ body {
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .flex {
@@ -34,9 +36,140 @@ code {
 .App {
     background-color: #282c34;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     font-size: 2vmin;
     color: white;
 }
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 20px;
+    margin-top: 0;
+    max-width: 1440px;
+
+    padding-top: $navbar-height;
+}
+
+a {
+    text-decoration: none;
+    color: #61dafb;
+
+    border: 1px solid #61dafb;
+    padding: 10px;
+
+    display: inline-block;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #61dafb;
+        color: #0f1114;
+    }
+}
+
+a.active {
+    background-color: #61dafb;
+    color: #0f1114;
+
+    &:hover {
+        background-color: #0f1114;
+        color: #61dafb;
+    }
+}
+
+.link_container {
+    display: flex;
+}
+
+.link_container > a {
+    margin: 10px;
+    margin-left: 0;
+}
+
+h1 {
+    font-size: 3em;
+    color: #61dafb;
+    background-color: #0f1114;
+
+    padding: 10px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #61dafb;
+    background-color: #0f1114;
+
+    padding: 10px;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #61dafb;
+    background-color: #0f1114;
+
+    padding: 10px;
+}
+
+h4 {
+    font-size: 1.25em;
+    color: #61dafb;
+    background-color: #0f1114;
+
+    padding: 10px;
+}
+
+p {
+    margin: 0;
+    padding: 10px;
+}
+
+.hightlight {
+    border: 1px solid #61dafb;
+    color: #61dafb;
+    display: inline-block;
+    font-weight: 700;
+    margin: 10px;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+span {
+    color: #61dafb;
+}
+
+.code-block-container {
+    width: 80vw;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $navbar-height;
+    background-color: #0f1114;
+    z-index: 100;
+    transition: top 0.3s;
+
+    padding-left: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.navbar--hidden {
+    top: -$navbar-height;
+}
+
+.change_color {
+    color: #61dafb;
+    font-weight: 500;
+}
+
+// @media screen and (max-width: 768px) {
+//     .navbar {
+//         display: none;
+//     }
+// }
