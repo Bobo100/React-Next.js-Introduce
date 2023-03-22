@@ -2,7 +2,7 @@ import Head from "next/head";
 import { CommonPrism } from "../components/Common";
 import Layout from "../components/layout";
 import styles from "../styles/styles.module.scss";
-const StylesNextjs = () => {
+const NextStyles = () => {
     return (
         <Layout>
             <Head>
@@ -28,11 +28,27 @@ export default HiThere`}
 
             <h2>CSS Modules</h2>
             <p>就像以前你使用css的方式，我們需要在styles資料夾中建立一個css檔案，並且在這個檔案中撰寫CSS。(也可以是scss、sass、less)，因為我們有在next.config.js中設定了sass的支援。</p>
+            <p>如果你沒有設定過，請你檢查：next.config.js</p>
+            <CommonPrism>
+                {`// Path: next.config.js
+const path = require('path')
+
+module.exports = {
+    sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+    },
+}`}
+            </CommonPrism>
+            <p>並且確保你有安裝sass。</p>
+            <CommonPrism>
+                {`npm install --save-dev sass`}
+            </CommonPrism>
+            <p>這樣就能使用sass或scss了。</p>
             <p className="hightlight">請注意：命名一定要是 XXX名稱.module.css，這樣才會被認為是CSS Modules。</p>
 
             <h3>模組化的好處</h3>
             <p>模組化的好處是，你可以在不同的檔案中使用相同的class名稱，而不會互相影響。</p>
-            
+
             <p>在這個例子中，我們建立一個styles資料夾，並且在裡面建立一個styles.module.scss檔案，並且在裡面撰寫CSS。</p>
             <CommonPrism>
                 {`// Path: styles/styles.module.scss
@@ -92,4 +108,4 @@ import '../styles/global.scss';`}
     );
 };
 
-export default StylesNextjs;
+export default NextStyles;

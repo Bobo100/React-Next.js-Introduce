@@ -168,8 +168,11 @@ span {
     font-weight: 500;
 }
 
-// @media screen and (max-width: 768px) {
-//     .navbar {
-//         display: none;
-//     }
-// }
+@media screen and (max-width: 768px) {
+    .container {
+        padding-top: 0;
+    }
+    .navbar {
+        display: none;
+    }
+}

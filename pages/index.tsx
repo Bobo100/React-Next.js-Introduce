@@ -1,3 +1,4 @@
+// https://react-next-js-introduce.vercel.app/
 import Head from "next/head";
 import { CommonPrism } from "../components/Common";
 import Layout from '../components/layout';
@@ -12,11 +13,10 @@ function HomePage() {
                 <p>Next.js是一個React框架，可以讓我們快速建立React應用程式。</p>
                 <p>Next.js的優點：</p>
                 <ul>
-                    <li>自動化的路由</li>
+                    <li>自動化的路由 (不需要自己在寫router)</li>
                     <li>自動化的編譯</li>
                     <li>自動化的代碼分割</li>
                     <li>自動化的靜態資源優化</li>
-                    <li>自動化的代碼分割</li>
                 </ul>
 
                 <p>Next.js的缺點：</p>
@@ -147,8 +147,7 @@ npx create-next-app@latest --typescript`}
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
-}
-`}
+}`}
                 </CommonPrism>
 
                 <p>接著，我們要建立一個pages資料夾，裡面放入index.jsx(js)，如果你是typescript的話，要改成index.tsx(ts)</p>
