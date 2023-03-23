@@ -10,7 +10,7 @@ function HomePage() {
             </Head>
             <div>
                 <h1>Next.js介紹</h1>
-                <p>Next.js是一個React框架，可以讓我們快速建立React應用程式。</p>
+                <p>Next.js是一個基於 React 的服務端渲染 (SSR) 框架，提供了自動代碼分割、靜態導出、服務端渲染等功能。它適用於構建大型、高流量的應用程序，可以讓我們快速建立React應用程式。</p>
                 <p>Next.js的優點：</p>
                 <ul>
                     <li>自動化的路由 (不需要自己在寫router)</li>
@@ -24,6 +24,8 @@ function HomePage() {
                     <li>不支持IE11</li>
                     <li>不支持自定義服務端渲染</li>
                 </ul>
+
+                <p>常常會有人拿Vite來比較，和Vite相比，Next.js適合用來做大型的專案，而Vite則適合用來做小型的專案</p>
 
                 <h2>如何使用Next.js</h2>
                 <p>先教你使用快速方法安裝，晚點也會教你如何從頭開始建立一個Next.js專案</p>
