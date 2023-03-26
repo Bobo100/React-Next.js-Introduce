@@ -1,5 +1,8 @@
 import Head from "next/head";
 import { CommonPrism } from "../components/Common";
+import CSSinJS from "../components/CSSinJS";
+import CssinJs3 from "../components/CSSinJS-styled-component";
+import CSSinJS2 from "../components/CSSinJS2";
 import Layout from "../components/layout";
 import styles from "../styles/styles.module.scss";
 const NextStyles = () => {
@@ -25,6 +28,93 @@ const NextStyles = () => {
 export default HiThere`}
             </CommonPrism>
             <p>在這個例子中，我們使用了一個style屬性，並且使用了一個物件，裡面有一個color屬性，值為red。</p>
+
+            <p>當然，我們也可以將這些屬性放到一個檔案去管理</p>
+            <h3>Example 1</h3>
+            <CommonPrism>
+                {`// variables.ts
+export const colors = {
+primary: '#007bff',
+secondary: '#6c757d',
+success: '#28a745',
+warning: '#ffc107',
+danger: '#dc3545',
+info: '#17a2b8',
+};
+
+export const spacing = {
+small: '8px',
+medium: '16px',
+large: '24px',
+};`}
+            </CommonPrism>
+            <CommonPrism>
+                {`// CSSinJS.tsx
+import React from 'react';
+import { colors, spacing } from './variables';
+
+const CSSinJS = () => {
+  const styles = {
+    backgroundColor: colors.primary,
+    padding: spacing.medium,
+  };
+
+  return (
+    <div style={styles}>
+      <h1>Hello World</h1>
+    </div>
+  );
+};
+
+export default CSSinJS;
+`}
+            </CommonPrism>
+            <p>這樣就可以使用CSS-in-JS了。</p>            
+            <CSSinJS />
+
+            <h3>Example 2</h3>
+            <CommonPrism>
+                {`function CSSinJS2() {
+    return (
+        <div>
+            Hello world
+            <p>scoped!</p>
+            <style jsx>{\`
+          p {
+            color: blue;
+          }
+          div {
+            background: red;
+          }
+          @media (max-width: 600px) {
+            div {
+              background: blue;
+            }
+          }
+        \`}</style>
+            <style global jsx>{\`
+          body {
+            background: black;
+          }
+        \`}</style>
+        </div>
+    )
+}
+
+export default CSSinJS2
+            
+            `}
+            </CommonPrism>
+            <CSSinJS2 />
+
+            <p>這是一個使用了 Next.js 的 JSX 語法，其中包含了兩個 {`<style>`} 標籤，分別使用了不同的屬性：jsx 和 global jsx。這兩個屬性都是 Next.js 中專門為 CSS-in-JS 設計的屬性。</p>
+            <p>在這個例子中，第一個 {`<style>`} 標籤使用了 jsx 屬性，這表示其中的 CSS 是組件內部的，只在該組件內部有效。其中定義了 p 元素的文字顏色為藍色，div 元素的背景顏色為紅色，並且在螢幕寬度小於 600 像素時，將 div 元素的背景顏色改為藍色。</p>
+            <p>第二個 {`<style>`} 標籤使用了 global jsx 屬性，這表示其中的 CSS 是全局的，將影響整個應用程式。其中定義了 body 元素的背景顏色為黑色。</p>
+
+            <h3>Example 3</h3>
+            <CssinJs3 />
+        
+
 
             <h2>CSS Modules</h2>
             <p>就像以前你使用css的方式，我們需要在styles資料夾中建立一個css檔案，並且在這個檔案中撰寫CSS。(也可以是scss、sass、less)，因為我們有在next.config.js中設定了sass的支援。</p>
