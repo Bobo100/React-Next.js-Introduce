@@ -1,6 +1,6 @@
 // 用來測試 優先順序
 // 1. 用來測試 style 的優先順序
-import style from "./css/StyleOrder.module.scss";
+import style from "../css/StyleOrder.module.scss";
 const StyleOrder = () => {
     return (
         <div>

@@ -1,6 +1,6 @@
 // CSSinJS.tsx
 import React from 'react';
-import { colors, spacing } from './variables';
+import { colors, spacing } from '../variables';
 
 const CSSinJS = () => {
     const styles = {
