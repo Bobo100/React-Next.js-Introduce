@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { CommonPrism } from "../components/Common";
-import CSSinJS from "../components/CSSinJS";
-import CssinJs3 from "../components/CSSinJS-styled-component";
-import CSSinJS2 from "../components/CSSinJS2";
+import CSSinJS from "../components/styles-nextjs/CSSinJS";
+import CssinJs3 from "../components//styles-nextjs/CSSinJS-styled-component";
+import CSSinJS2 from "../components/styles-nextjs/CSSinJS2";
 import Layout from "../components/layout";
-import StyleOrder from "../components/style_order";
+import StyleOrder from "../components/styles-nextjs/style_order";
 import styles from "../styles/styles.module.scss";
 const NextStyles = () => {
   return (
