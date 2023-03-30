@@ -87,12 +87,15 @@ const Nextjs_Works = () => {
                     <li>可以使用SEO</li>
                 </ul>
                 <p>你可以使用getServerSideProps來實現Server-side rendering(選擇你想要用服務器端渲染的頁面)</p>
-                
+
                 <h4>Static site generation</h4>
                 <p>
                     也是在Server生成的HTML，但不同的時候是在build的時候，而不是在request的時候。HTML會儲存在CDN中，讓每個request都可以快速的取得HTML。
                 </p>
 
+
+                <h2>補充</h2>
+                <p>一般情況下 React 應用程式是在 client-side rendering (CSR) 的方式下工作。這種方式下，在客戶端上下載初始的 HTML shell 和 JavaScript 檔案，JavaScript檔案裡面包含了已經轉換成 JavaScript 代碼的 JSX，然後由瀏覽器內置的 JavaScript 引擎在客戶端上執行和解析這些 JS 代碼，生成動態的使用者介面。這種方式下需要等到頁面內容完成渲染才會顯示給用戶，因此速度較慢，對於 SEO 也不利。而在 server side rendering (SSR) 中，React 應用程式是在伺服器端渲染好 HTML 並返回給客戶端的方式下工作，所以用戶可以快速地看到初始的 HTML 內容，有助於提高首屏加載速度和 SEO。</p>
 
             </div>
         </Layout>
