@@ -20,6 +20,7 @@ const NextStyles = () => {
       </ul>
       <h2>CSS-in-JS</h2>
       <p>使用CSS-in-JS的方式，可以讓我們在React中使用CSS，而不需要使用外部的CSS檔案。</p>
+      <p>是使用動態的方式來使用CSS，而不是使用靜態的方式。</p>
       <p>使用方式如下：</p>
       <CommonPrism>
         {`function HiThere() {
