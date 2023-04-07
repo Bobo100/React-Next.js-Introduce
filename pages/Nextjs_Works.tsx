@@ -60,10 +60,13 @@ const Nextjs_Works = () => {
                 </ul>
 
                 <p>這邊有一張圖片很好的說明了一切</p>
-                <Image src="/images/rendering.jpg" width={800} height={600} alt="" />
+                <Image src="/images/rendering.jpg" width={800} height={800} alt="" />
                 <a href="https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/" rel="noopener" target="_blank">Sources: https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/</a>
-
                 <a href="https://www.makeuseof.com/nextjs-rendering-methods-csr-ssr-ssg-isr/" rel="noopener" target="_blank">Sources: https://www.makeuseof.com/nextjs-rendering-methods-csr-ssr-ssg-isr/</a>
+
+                <p>Core Web Vitals (CWV) 是 Google 新頁面體驗排名因素的一部分，使用 3 種不同的背景顏色來識別，每種顏色都與對 CWV 的性能影響相關。紅色表示性能不佳，橙色表示性能良好，而綠色表示性能最佳。</p>
+
+                <a href="https://next-page-rendering.vercel.app/" rel="noopener" target="_blank">別人寫的四個測試頁面(含程式碼)</a>
 
                 <p>我們先介紹一個重要觀念</p>
                 <h3>Pre-rendering</h3>
@@ -140,8 +143,12 @@ const Nextjs_Works = () => {
                 <p>當用戶訪問該頁面時，靜態HTML文件直接傳輸到瀏覽器中。</p>
                 <p>從眾多靜態網頁中，選擇未變動的網頁進行缓存，通常使用CDN進行内容傳送,提高使用者訪問速度。</p>
 
-                <p>SSG具有與CSR類似的優點，因為即使在初次加載時也能有效地提供更好的性能。同時，由於靜態網頁是SEO友好的，SSG 能夠為您的網站提供良好 SEO 表現,便于搜索引擎爬取您的网页。另外，SSG還可以非常方便地進行幾乎實時的網站部署，不需要伺服器端執行React應用程序。</p>
+                <p>SSG具有與CSR類似的優點，因為即使在初次加載時也能有效地提供更好的性能。同時，由於靜態網頁是SEO友好的，SSG 能夠為您的網站提供良好 SEO 表現,便于搜索引擎爬取您的網頁。另外，SSG還可以非常方便地進行幾乎實時的網站部署，不需要伺服器端執行React應用程序。</p>
 
+                <p className="hightlight">ISR的流程步驟：</p>
+                <p>ISR是一種在CSR和SSR之間的一種折衷方案，它的核心思想是在CSR的基礎上，將部分頁面內容進行預渲染，然後再進行客戶端渲染。</p>
+                <p>在ISR中，首次請求時，會將部分頁面內容進行預渲染，然後再進行客戶端渲染。這樣做的好處是，可以在首次請求時就將部分頁面內容進行渲染，減少了客戶端渲染的時間，提高了首次請求的速度。</p>
+                <p>但是，由於ISR是在CSR的基礎上進行的，所以在SEO方面的表現還是不如SSR。</p>
 
                 <p className="hightlight">總結來說</p>
                 <p>總的來說，CSR和SSR對於數據較多的網頁和動態體驗較為重要的網站適用，首次渲染速度較快但需要注意SEO問題；而SSG則適合內容變化不大、需要較好SEO表現或是在CDN等多個方面使用，首次載入速度比前者兩種方式均快。</p>
@@ -161,29 +168,32 @@ const Nextjs_Works = () => {
                 <p>SSR、SSG和ISR在伺服器端build的時候都會執行完整的像是jsx、tsx、scss、html等檔案，所以它們能夠在伺服器端產生完整的HTML內容，並且將其返回給瀏覽器，瀏覽器就可以直接顯示網頁內容了。相較於CSR，SSR、SSG和ISR能夠更好地支援SEO，因為它們能夠產生完整的HTML內容，搜尋引擎就能夠更好地抓取網頁內容，提高網頁的排名。</p>
                 <p>ISR 中，如果在初次渲染或之後的預渲染中檢測到需要使用 fetch API 獲取的數據，就會發出相應的請求，並使用這些數據重新生成 HTML。這些 HTML 通常會被緩存起來，以便在下一個請求時使用，從而提高性能。因此，ISR 可以使網站具有類似於 SSR 的性能和 SEO 優勢，同時又能享受 SSG 的性能優勢。</p>
 
-
+                <p>伺服器端的build是提前生成靜態內容，所以是不會執行useEffect hook的喔</p>
 
                 {/* 紀錄chatgpt回答 */}
+                <p className="hightlight">要實現四種render方式，需要用到Next.js的一些函數</p>
                 <p>
-                    上述這四個 Next.js 的函數都跟渲染方式有關係，下面簡單說明一下它們的使用場景：
+                    {/* 上述這四個 Next.js 的函數都跟渲染方式有關係，下面簡單說明一下它們的使用場景： */}
 
-                    getInitialProps: 可以讓一個頁面在服務器端進行渲染，並在渲染之前進行數據預取，這樣可以讓頁面的數據在第一時間就被填充上，特別適合用於 SEO。
-                    getServerSideProps: 每當有一個頁面請求時，Next.js 會使用 getServerSideProps 函數返回的數據在服務器端進行渲染，這樣可以實現 SSR（Server-Side Rendering），特別適合於需要經常更新的數據頁面。
-                    getStaticPaths: 如果你的頁面使用了動態路由，那麼可以使用 getStaticPaths 函數來提前靜態生成所有動態路由的頁面，這樣可以實現 SSG（Static Site Generation）。
-                    getStaticProps: 如果一個頁面的數據在編譯時期就可以確定，那麼可以使用 getStaticProps 函數來實現在編譯時期預渲染頁面。
-                    總結來說：
+                    getInitialProps：可以讓一個頁面在服務器端進行渲染，並在渲染之前進行數據預取，這樣可以讓頁面的數據在第一時間就被填充上，特別適合用於 SEO。<br/>
+                    getServerSideProps：每當有一個頁面請求時，Next.js 會使用 getServerSideProps 函數返回的數據在服務器端進行渲染，這樣可以實現 SSR（Server-Side Rendering），特別適合於需要經常更新的數據頁面。<br/>
+                    getStaticPaths：如果你的頁面使用了動態路由，那麼可以使用 getStaticPaths 函數來提前靜態生成所有動態路由的頁面，這樣可以實現 SSG（Static Site Generation）。<br/>
+                    getStaticProps：如果一個頁面的數據在編譯時期就可以確定，那麼可以使用 getStaticProps 函數來實現在編譯時期預渲染頁面。<br/>
+                    總結來說：<br/>
 
-                    getInitialProps 和 getServerSideProps 都可以實現 SSR，但是 getInitialProps 已經被標記為過時，推薦使用 getServerSideProps。
-                    getStaticPaths 和 getStaticProps 都是用於實現 SSG 的函數，其中 getStaticPaths 是用於生成動態路由的頁面，而 getStaticProps 則是用於在編譯時期預渲染頁面。
+                    getInitialProps 和 getServerSideProps 都可以實現 SSR，但是 getInitialProps 已經被標記為過時，推薦使用 getServerSideProps。<br/>
+                    getStaticPaths 和 getStaticProps 都是用於實現 SSG 和 ISR 的函數，其中 getStaticPaths 是用於生成動態路由的頁面，而 getStaticProps 則是用於在編譯時期預渲染頁面。
                 </p>
 
+                <p className="hightlight">補充</p>
                 <p>
-                    ，getInitialProps 和 getServerSideProps 都可以實現服務器端渲染(SSR)。
+                    getInitialProps 和 getServerSideProps 都可以實現服務器端渲染(SSR)。
                     在 Next.js 的早期版本中，getInitialProps 被用來從服務器獲取數據，然後將其傳遞給頁面組件進行渲染。
                     而現在，Next.js 官方推薦使用 getServerSideProps 來實現服務器端渲染。
                     getServerSideProps 功能和 getInitialProps 類似，但是有一些不同之處。其中最大的不同是，getServerSideProps 只能用於頁面組件上，而 getInitialProps 可以用於頁面組件和其他組件。另外，getInitialProps 在未來的版本中可能會被刪除，因此現在使用 getServerSideProps 是一個更好的選擇。
                 </p>
 
+                <h3>總結</h3>
                 <p>
                     CSR（Client-Side Rendering）是在瀏覽器上執行的，通常使用React框架的話，可以使用React的生命周期方法componentDidMount來在客戶端渲染頁面。而在Next.js中，CSR通常不需要使用特殊的函數。
                     ISR（Incremental Static Regeneration）是在Next.js中實現SSG時的一個功能，可以在不重新構建整個站點的情況下，只重新生成有變化的頁面。通常使用getStaticProps函數來進行數據獲取和生成靜態頁面，並且通過設置revalidate參數來指定頁面的重新生成間隔時間。
