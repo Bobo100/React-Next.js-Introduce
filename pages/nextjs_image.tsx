@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { CommonPrism } from '../components/Common'
 import LocalImage from '../components/image-nextjs/locatImage'
 import RemoteImage from '../components/image-nextjs/remoteImage'
 import Layout from '../components/layout'
-function ImageInNextJs() {
+function Nextjs_Image() {
     return (
         <Layout>
             <Head>
@@ -32,7 +31,7 @@ function ImageInNextJs() {
             <CommonPrism>
                 {`import Image from 'next/image'
 
-function ImageInNextJs() {
+function Nextjs_Image() {
     return (
         <Image
             src="/images/profile.jpg"
@@ -43,11 +42,11 @@ function ImageInNextJs() {
     )
 }
 
-export default ImageInNextJs
+export default Nextjs_Image
 
 // 或是
 
-function ImageInNextJs() {
+function Nextjs_Image() {
     return (
         <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEU
@@ -61,7 +60,7 @@ function ImageInNextJs() {
     )
 }
 
-export default ImageInNextJs`}
+export default Nextjs_Image`}
             </CommonPrism>
 
             <RemoteImage />
@@ -74,7 +73,7 @@ export default ImageInNextJs`}
                 {`import Image from 'next/image'
 import profilePic from '../public/images/profile.jpg'
 
-function ImageInNextJs() {
+function Nextjs_Image() {
     return (
         <Image
             src={profilePic}
@@ -85,7 +84,7 @@ function ImageInNextJs() {
     )
 }
 
-export default ImageInNextJs`}
+export default Nextjs_Image`}
             </CommonPrism>
 
             <LocalImage />
@@ -101,10 +100,8 @@ export default ImageInNextJs`}
 
             <p>當你使用了fill這個屬性時，parent請給予position: relative與display: block。</p>
 
-
-
         </Layout>
     )
 }
 
-export default ImageInNextJs
+export default Nextjs_Image

@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { CommonPrism } from "../components/Common";
 import CSSinJS from "../components/styles-nextjs/CSSinJS";
-import CssinJs3 from "../components//styles-nextjs/CSSinJS-styled-component";
+import CssinJs3 from "../components/styles-nextjs/CSSinJS-styled-component";
 import CSSinJS2 from "../components/styles-nextjs/CSSinJS2";
 import Layout from "../components/layout";
 import StyleOrder from "../components/styles-nextjs/style_order";
 import styles from "../styles/styles.module.scss";
-const NextStyles = () => {
+const Nextjs_Styles = () => {
   return (
     <Layout>
       <Head>
@@ -212,4 +212,4 @@ import '../styles/global.scss';`}
   );
 };
 
-export default NextStyles;
+export default Nextjs_Styles;
