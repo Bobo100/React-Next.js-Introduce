@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CsrPage = () => {
+const CsrPage_keep = () => {
     const [count, setCount] = React.useState(0);
 
     return (
@@ -12,7 +12,7 @@ const CsrPage = () => {
     );
 };
 
-export default CsrPage;
+export default CsrPage_keep;
 
 export const getServerSideProps = async () => {
     return { props: {} };

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Layout from "../components/layout";
 import { Prism } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import Link from "next/link";
 
 const NextjsRender = () => {
     return (
@@ -16,10 +17,22 @@ const NextjsRender = () => {
                 <p>接續前面的內容。解惑部分：</p>
 
                 <h2>渲染模式</h2>
-                <p>1. Client Side Rendering (CSR)</p>
-                <p>2. Server Side Rendering (SSR)</p>
-                <p>3. Static Site Generation (SSG)</p>
-                <p>4. Incremental Static Regeneration (ISR)</p>
+                <p>1. Client Side Rendering (CSR)
+                    <Link href="/render_example/CSR">看看CSR的效果</Link>
+                </p>
+                <p>2. Server Side Rendering (SSR)
+                    <Link href="/render_example/SSR">看看SSR的效果</Link>
+                </p>
+                <p>3. Static Site Generation (SSG)
+                    <Link href="/render_example/SSG">看看SSG的效果</Link>
+                </p>
+                <p>4. Incremental Static Regeneration (ISR)
+                    <Link href="/render_example/ISR">看看ISR的效果</Link>
+
+                    <a href="https://www.youtube.com/watch?v=nrfuN_Hyd3Y" target="_blank" rel="noopener">很棒的教學</a>
+                    <a href="https://www.youtube.com/watch?v=BGexHR1tuOA" target="_blank" rel="noopener">很棒的教學2</a>
+
+                </p>
 
                 <Image src="/images/rendering.jpg" width={800} height={800} alt="" />
 
@@ -125,7 +138,7 @@ const NextjsRender = () => {
                 <p>在 SSG 和 ISR 的情況下，頁面會在服務器端預先生成靜態頁面，並在構建期間執行 useEffect 鉤子函數中的代碼。
                     當客戶端下載並渲染完頁面後，也會再次執行 useEffect 中的代碼。
                     因此，對於像您提供的代碼示例，fetch 請求會在服務器端和客戶端兩個階段都被執行。</p>
-                
+
                 {/* 補充一下 ISR 到底是 SSG 還是 SSR作法過來的 */}
 
             </div>

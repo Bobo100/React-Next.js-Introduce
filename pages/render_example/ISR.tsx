@@ -1,33 +1,32 @@
-import { useEffect, useState } from 'react';
+import Layout from '../../components/layout';
+import Head from 'next/head';
 
 type Props = {
-    count: number;
+    time: string;
 };
 
-const IsrPage = ({ count }: Props) => {
-    const [newCount, setNewCount] = useState(count);
-
-    useEffect(() => {
-        const intervalId = setInterval(async () => {
-            const res = await fetch('https://api.countapi.xyz/hit/nextjs-example/isr');
-            const json = await res.json();
-            setNewCount(json.value);
-        }, 1000);
-
-        return () => clearInterval(intervalId);
-    }, []);
+const IsrPage = ({ time }: Props) => {
+    // 強制revalidate
+    function revalidate() {
+        fetch('/api/revalidate');
+    }
 
     return (
-        <div>
-            <h1>ISR Page</h1>
-            <p>You clicked {newCount} times.</p>
-        </div>
+        <Layout>
+            <Head>
+                <title>ISR Page</title>
+            </Head>
+            <div>
+                <h1>ISR Page</h1>
+                <p>現在時間 {time}</p>
+                <p>revalidate 設定是60秒</p>
+                <button onClick={() => revalidate()}>手動強制revalidate</button>
+            </div>
+        </Layout>
     );
 };
 
 export async function getStaticProps() {
-    const res = await fetch('https://api.countapi.xyz/hit/nextjs-example/isr');
-    const json = await res.json();
     /* 
     revalidate是在 Next.js 中用於確定靜態頁面的重新驗證間隔時間的屬性。
     當您的網站有大量的用戶訪問時，您可能希望在一定時間內重新生成靜態頁面內容以確保數據的準確性。這可以通過設置 revalidate 屬性來實現，在這裡，您可以指定以秒為單位的重新驗證時間間隔。
@@ -36,7 +35,11 @@ export async function getStaticProps() {
     /* 
     加上revalidate 就等於從SSG變成ISR
     */
-    return { props: { count: json.value }, revalidate: 1 };
+    return {
+        props: {
+            time: new Date().toISOString()
+        }, revalidate: 60
+    };
 }
 
 export default IsrPage;

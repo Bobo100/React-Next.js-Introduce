@@ -4,7 +4,7 @@ type Props = {
     content: string;
 };
 
-const SsgPage = ({ content }: Props) => {
+const SsgPage_keep = ({ content }: Props) => {
     return (
         <div>
             <h1>SSG Page</h1>
@@ -28,4 +28,4 @@ export async function getStaticProps() {
     // return { props: { count: json.value }, revalidate: 1 };
 }
 
-export default SsgPage;
+export default SsgPage_keep;

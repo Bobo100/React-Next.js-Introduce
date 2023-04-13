@@ -1,18 +1,28 @@
 import { GetServerSideProps } from 'next';
+import Layout from '../../components/layout';
+import Head from 'next/head';
 
 type Props = {
     data: {
-        name: string;
+        title: string;
         message: string;
     };
+    time: string;
 };
 
-const SsrPage = ({ data }: Props) => {
+const SsrPage = ({ data, time }: Props) => {
     return (
-        <div>
-            <h1>{data.name}</h1>
-            <p>{data.message}</p>
-        </div>
+        <Layout>
+            <Head>
+                <title>SSR Page</title>
+            </Head>
+            <div>
+                <h1>{data.title}</h1>
+                <p>{data.message}</p>
+                <p>build的時候的時間 {time}，因為這是SSR，所以這個時間會每次請求都會變動。</p>
+            </div>
+        </Layout>
+
     );
 };
 
@@ -24,9 +34,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     return {
         props: {
             data: {
-                name: data.title,
+                title: data.title,
                 message: data.body,
             },
+            time: new Date().toISOString(),
         },
     };
 };
