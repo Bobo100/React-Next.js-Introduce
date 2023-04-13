@@ -3,7 +3,7 @@ import { CommonPrism } from '../components/Common'
 import LocalImage from '../components/image-nextjs/locatImage'
 import RemoteImage from '../components/image-nextjs/remoteImage'
 import Layout from '../components/layout'
-function Nextjs_Image() {
+function NextjsImage() {
     return (
         <Layout>
             <Head>
@@ -31,7 +31,7 @@ function Nextjs_Image() {
             <CommonPrism>
                 {`import Image from 'next/image'
 
-function Nextjs_Image() {
+function NextjsImage() {
     return (
         <Image
             src="/images/profile.jpg"
@@ -42,11 +42,11 @@ function Nextjs_Image() {
     )
 }
 
-export default Nextjs_Image
+export default NextjsImage
 
 // 或是
 
-function Nextjs_Image() {
+function NextjsImage() {
     return (
         <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEU
@@ -60,7 +60,7 @@ function Nextjs_Image() {
     )
 }
 
-export default Nextjs_Image`}
+export default NextjsImage`}
             </CommonPrism>
 
             <RemoteImage />
@@ -73,7 +73,7 @@ export default Nextjs_Image`}
                 {`import Image from 'next/image'
 import profilePic from '../public/images/profile.jpg'
 
-function Nextjs_Image() {
+function NextjsImage() {
     return (
         <Image
             src={profilePic}
@@ -84,7 +84,7 @@ function Nextjs_Image() {
     )
 }
 
-export default Nextjs_Image`}
+export default NextjsImage`}
             </CommonPrism>
 
             <LocalImage />
@@ -104,4 +104,4 @@ export default Nextjs_Image`}
     )
 }
 
-export default Nextjs_Image
+export default NextjsImage

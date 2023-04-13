@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-function Nextjs_API() {
+function NextjsAPI() {
     return (
         <Layout>
             <Head>
@@ -19,4 +19,4 @@ function Nextjs_API() {
     )
 }
 
-export default Nextjs_API
+export default NextjsAPI

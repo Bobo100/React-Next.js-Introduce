@@ -3,7 +3,7 @@ import Image from "next/image";
 import Layout from "../components/layout";
 
 // How Next.js Works
-const Nextjs_Works = () => {
+const NextjsWorks = () => {
     return (
         <Layout>
             <Head>
@@ -214,4 +214,4 @@ const Nextjs_Works = () => {
     );
 };
 
-export default Nextjs_Works;
+export default NextjsWorks;

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 
-function Nextjs_Routes() {
+function NextjsRoutes() {
     return (
         <Layout>
             <Head>
@@ -15,4 +15,4 @@ function Nextjs_Routes() {
     );
 }
 
-export default Nextjs_Routes;
+export default NextjsRoutes;

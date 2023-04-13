@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import { Prism } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-const Nextjs_Render = () => {
+const NextjsRender = () => {
     return (
         <Layout>
             <Head>
@@ -134,4 +134,4 @@ const Nextjs_Render = () => {
     );
 };
 
-export default Nextjs_Render;
+export default NextjsRender;
