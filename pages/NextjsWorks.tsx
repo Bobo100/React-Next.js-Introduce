@@ -191,6 +191,10 @@ export default SsgPage;
                     意思是說在第一個使用者request開始到revalidate的時間之間，其他使用者request的時候都還會看到舊的內容，但當revalidate的時間到了，就會再執行一次getStaticProps，然後再重新build一次，這樣其他使用者request的時候就會看到新的內容了。
                 </p>
 
+                <p>看文字不懂，我們看圖：</p>
+                <p>V1 代表Page的版本，第一個build產生出來的Page</p>
+                <Image src="/images/regeneration-regeneration-nextjs.png" width={800} height={400} alt={""} />
+
 
                 <h2>流程步驟</h2>
                 <p className="hightlight">CSR的流程步驟：</p>
