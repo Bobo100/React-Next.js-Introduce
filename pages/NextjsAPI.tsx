@@ -229,6 +229,80 @@ export default function handler(
 
 
                 <h1>next/router</h1>
+                <p>next/router是Next.js的路由器，它提供了一個客戶端的路由器，可以讓我們在客戶端導航。</p>
+                <p>它是一個全局的路由器，所以我們可以在任何地方使用它。</p>
+                <p>它的API如下：</p>
+                <ul>
+                    <li>router.push(url, as=url, options)</li>
+                    <li>router.replace(url, as=url, options)</li>
+                    <li>router.reload()</li>
+                    <li>router.back()</li>
+                    <li>router.prefetch(url)</li>
+                    <li>router.beforePopState(cb)</li>
+                    <li>router.events</li>
+                </ul>
+
+                <p>像是我們可以去檢測上一次的路由是什麼，或者是我們可以在路由改變前做一些事情。</p>
+                <p>下面舉一個頁面跳轉限制的例子：</p>
+                <p>會創建三個pages分別是、B和C，我們要設定說，B也面只有A頁面能夠跳轉過來，C也面只有B頁面能夠跳轉過來。</p>
+                <p>只要跳轉進來的路徑不正確就會跳轉到我們指定的路徑去。</p>
+                <CommonPrism>
+                    {`// pages/NextjsAPI/A.tsx
+function A() {
+    return (
+        <Layout>
+            <Head>
+                <title>A</title>
+            </Head>
+            <h1>A</h1>
+            <Link href={{ pathname: '/NextjsAPI/B', query: { from: 'A' } }}>
+                從A前往B，會成功！
+            </Link>
+            <Link href={{ pathname: '/NextjsAPI/C', query: { from: 'A' } }}>
+                從A前往C (不會成功) 而且因為我們也設定了B 必須是從A前往，所以會被導回A
+            </Link>
+        </Layout>
+    )
+}
+
+export default A`}
+                </CommonPrism>
+
+                <CommonPrism>
+                    {`// pages/NextjsAPI/B.tsx
+import Head from "next/head";
+import Layout from "../../components/layout";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+function B() {
+    const router = useRouter()
+
+    if (router.query.from != 'A') {
+        router.push('/NextjsAPI/A')
+    }
+
+    return (
+        <Layout>
+            <Head>
+                <title>B</title>
+            </Head>
+            <h1>B</h1>
+            <Link href={{ pathname: '/NextjsAPI/A', query: { from: 'B' } }}>
+                從B前往A(一定成功。因為A沒有限制)
+            </Link>
+            <Link href={{ pathname: '/NextjsAPI/C', query: { from: 'B' } }}>
+                從B前往C(會成功，因為我們設定一定要從B前往)
+            </Link>
+        </Layout>
+    )
+}
+
+export default B`}
+                </CommonPrism>
+                <p>同理，你就會設定C頁面</p>
+
+                <Link href="/NextjsAPI/A">前往體驗</Link>
 
                 <h1>next/head</h1>
             </div>
