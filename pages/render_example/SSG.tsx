@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../../components/layout';
 import Head from 'next/head';
 
@@ -8,6 +8,11 @@ type Props = {
 };
 
 const SsgPage = ({ time, content }: Props) => {
+
+    useEffect(() => {
+        console.log("SSG Page");
+    }, []);
+    
     return (
         <Layout>
             <Head>
@@ -33,10 +38,6 @@ export async function getStaticProps() {
             time: new Date().toISOString()
         }
     };
-
-    // const res = await fetch('https://api.countapi.xyz/hit/nextjs-example/ssg');
-    // const json = await res.json();
-    // return { props: { count: json.value }, revalidate: 1 };
 }
 
 export default SsgPage;
