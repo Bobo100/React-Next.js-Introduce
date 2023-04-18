@@ -4,10 +4,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 function C() {
-    const router = useRouter()
 
-    if (router.query.from != 'B') {
-        router.push('/NextjsAPI/B')
+    if (typeof window !== 'undefined') {
+        const router = useRouter()
+
+        if (router.query.from != 'B') {
+            router.push('/NextjsAPI/B')
+        }
     }
 
     return (
