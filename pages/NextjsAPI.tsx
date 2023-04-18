@@ -21,8 +21,10 @@ function NextjsAPI() {
                     它們是伺服器端的bundles，也不會增加客戶端的bundle大小。
                 </p>
 
-                <p>在 Next.js 中，`/api` 資料夾下的檔案代表的是 Serverless 函數。它們是在部署程式碼時，由 AWS Lambda 或其他雲端提供商啟動的小型函數。
-                    與傳統後端API的差異在於，這些 Serverless 函數與您的Next.js應用程式掛鉤，可以幫助您輕鬆地創建 API 端點，因此您可以使用同一種語言 (JavaScript/TypeScript)，以及使用相同的開發環境，便於管理和測試。此外，它們還具有自動擴展、零配置和即時預覽等功能，使其更容易部署和使用。
+                <p className='hightlight'>可能會想問說：在next.js中page/api下寫api和我在後端寫api的差別是什麼?</p>
+
+                <p className='border'>在 Next.js 中，`/api` 資料夾下的檔案代表的是 Serverless 函數。它們是在部署程式碼時，由 AWS Lambda 或其他雲端提供商啟動的小型函數。<br />
+                    與傳統後端API的差異在於，這些 Serverless 函數與您的Next.js應用程式掛鉤，可以幫助您輕鬆地創建 API 端點，因此您可以使用同一種語言 (JavaScript/TypeScript)，以及使用相同的開發環境，便於管理和測試。此外，它們還具有自動擴展、零配置和即時預覽等功能，使其更容易部署和使用。<br />
                     因此，與傳統後端API相比，使用 Next.js API 可以大大簡化您的工作流程，讓您專注於開發和部署應用程式的其他方面。
                 </p>
 
