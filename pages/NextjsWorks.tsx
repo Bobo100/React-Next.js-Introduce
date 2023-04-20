@@ -63,7 +63,9 @@ const NextjsWorks = () => {
 
                 <p>這邊有一張圖片很好的說明了一切，我們下面也會再詳細的說明。</p>
                 <Image src="/images/rendering.jpg" width={800} height={800} alt="" />
+                <br />
                 <a href="https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/" rel="noopener" target="_blank">Sources: https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/</a>
+                <br />
                 <a href="https://www.makeuseof.com/nextjs-rendering-methods-csr-ssr-ssg-isr/" rel="noopener" target="_blank">Sources: https://www.makeuseof.com/nextjs-rendering-methods-csr-ssr-ssg-isr/</a>
 
                 <p>這張圖旁邊的顏色代表的是Core Web Vitals (CWV)，它是 Google 新頁面體驗排名因素的一部分，使用 3 種不同的背景顏色來識別，每種顏色都與對 CWV 的性能影響相關。紅色表示性能不佳，橙色表示性能良好，而綠色表示性能最佳。這部分我們先帶過</p>
@@ -122,6 +124,54 @@ const NextjsWorks = () => {
                 <p>要實現SSR，我們只需要使用getServerSideProps</p>
                 <Link href="/render_example/SSR">看看SSR的效果</Link>
 
+                <CommonPrism>
+                    {`import { GetServerSideProps } from 'next';
+import Layout from '../../components/layout';
+import Head from 'next/head';
+
+type Props = {
+    data: {
+        title: string;
+        message: string;
+    };
+    time: string;
+};
+
+const SsrPage = ({ data, time }: Props) => {
+    return (
+        <Layout>
+            <Head>
+                <title>SSR Page</title>
+            </Head>
+            <div>
+                <h1>{data.title}</h1>
+                <p>{data.message}</p>
+                <p>build的時候的時間 {time}，因為這是SSR，所以這個時間會每次請求都會變動。</p>
+            </div>
+        </Layout>
+
+    );
+};
+
+// 如果你有一些數據要在頁面渲染之前先取得，你可以使用 getServerSideProps 來達成這個目的。這個方法會在每次請求時都會被呼叫，所以你可以在這裡面做一些資料庫查詢或是 API 請求，然後再將資料傳遞給頁面。
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+    const data = await response.json();
+
+    return {
+        props: {
+            data: {
+                title: data.title,
+                message: data.body,
+            },
+            time: new Date().toISOString(),
+        },
+    };
+};
+
+export default SsrPage;`}
+                </CommonPrism>
+
                 <h4>Static site generation</h4>
                 <p>
                     在我們佈署到Server後，就開始build，然後在build的過程中，會產出HTML、Json與JavaScript(也會執行useEffect)，但也就只有在佈署的時候會執行一次。所以，預設的內容是不會變的。
@@ -132,7 +182,11 @@ const NextjsWorks = () => {
                 <p>當我們要使用SSG的時候，要使用getStaticProps，在佈署到Server後，就開始build，就只會只會執行一次getStaticProps</p>
                 <p>所以，我特別寫了一個一直抓取現在的時間的函式，然後把這個時間傳給元件。但時間並不會在使用者每次看到畫面的時候都有變化，而是固定的(時間的value會在build的時候就已經產生了)。</p>
                 <CommonPrism>
-                    {`type Props = {
+                    {`import React, { useEffect } from 'react';
+import Layout from '../../components/layout';
+import Head from 'next/head';
+
+type Props = {
     content: string;
     time: string;
 };
@@ -181,6 +235,7 @@ export default SsgPage;
                     <li>每個request都可以快速的取得HTML，因為HTML已經事先都儲存在CDN中</li>
                     <li>可以使用SEO</li>
                 </ul>
+                <Link href="/render_example/SSG">看看SSG的效果</Link>
 
 
                 <h4>Incremental static regeneration</h4>
@@ -194,6 +249,55 @@ export default SsgPage;
                 <p>看文字不懂，我們看圖：</p>
                 <p>V1 代表Page的版本，第一個build產生出來的Page</p>
                 <Image src="/images/regeneration-regeneration-nextjs.png" width={800} height={400} alt={""} />
+
+                <p>程式碼如下： <Link href="/render_example/ISR">看看ISR的效果</Link></p>
+                <CommonPrism>
+                    {`import Layout from '../../components/layout';
+import Head from 'next/head';
+
+type Props = {
+    time: string;
+};
+
+const IsrPage = ({ time }: Props) => {
+    // 強制revalidate
+    function revalidate() {
+        fetch('/api/revalidate');
+    }
+
+    return (
+        <Layout>
+            <Head>
+                <title>ISR Page</title>
+            </Head>
+            <div>
+                <h1>ISR Page</h1>
+                <p>現在時間 {time}</p>
+                <p>revalidate 設定是60秒</p>
+                <button onClick={() => revalidate()}>手動強制revalidate</button>
+            </div>
+        </Layout>
+    );
+};
+
+export async function getStaticProps() {
+    /* 
+    revalidate是在 Next.js 中用於確定靜態頁面的重新驗證間隔時間的屬性。
+    當您的網站有大量的用戶訪問時，您可能希望在一定時間內重新生成靜態頁面內容以確保數據的準確性。這可以通過設置 revalidate 屬性來實現，在這裡，您可以指定以秒為單位的重新驗證時間間隔。
+    例如，在上面的示例中，revalidate 的值是1，這意味著每秒最多只能重新生成此頁面一次，即使有更多的用戶訪問它也是如此。如果沒有更改，則Next.js將直接從緩存中提供先前生成的靜態頁面。
+    */
+    /* 
+    加上revalidate 就等於從SSG變成ISR
+    */
+    return {
+        props: {
+            time: new Date().toISOString()
+        }, revalidate: 60
+    };
+}
+
+export default IsrPage;`}
+                </CommonPrism>
 
 
                 <h2>流程步驟</h2>
