@@ -5,7 +5,7 @@ import CssinJs3 from "../components/styles-nextjs/CSSinJS-styled-component";
 import CSSinJS2 from "../components/styles-nextjs/CSSinJS2";
 import Layout from "../components/layout";
 import StyleOrder from "../components/styles-nextjs/style_order";
-import styles from "../styles/styles.module.scss";
+import styles from "../../styles/styles.module.scss";
 const NextjsStyles = () => {
   return (
     <Layout>

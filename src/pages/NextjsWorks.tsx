@@ -56,8 +56,8 @@ const NextjsWorks = () => {
                 <p>在Next.js中，有四種rendering：</p>
                 <ul>
                     <li>Client-Side Rendering (一般React的預設)，以後我們會以CSR來稱呼</li>
-                    <li>Server-Side Rendering (Pre-rendering) (Next.js的預設)，以後我們會以SSR來稱呼</li>
-                    <li>Static Site Generation (Pre-rendering)，以後我們會以SSG來稱呼</li>
+                    <li>Server-Side Rendering (Pre-rendering)，以後我們會以SSR來稱呼</li>
+                    <li>Static Site Generation (Pre-rendering) (Next.js的預設)，以後我們會以SSG來稱呼</li>
                     <li>Incremental Static Regeneration (Pre-rendering)，以後我們會以ISR來稱呼</li>
                 </ul>
 

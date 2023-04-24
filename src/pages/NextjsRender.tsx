@@ -16,6 +16,13 @@ const NextjsRender = () => {
 
                 <p>接續前面的內容。解惑部分：</p>
 
+                <h2>build時候的狀態</h2>
+                <p>λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps) //使用getInitialProps or getServerSideProps的時候匯市SSR</p>
+                <p>○  (Static)  automatically rendered as static HTML (uses no initial props) //什麼都沒有用的時候會是這個</p>
+                <p>●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps) //使用getStaticProps的時候</p>
+                <p>(ISR)     incremental static regeneration (uses revalidate in getStaticProps) //使用getStaticProps 並且有revalidate</p>
+
+
                 <h2>渲染模式</h2>
                 <p>1. Client Side Rendering (CSR)
                     <Link href="/render_example/CSR">看看CSR的效果</Link>
