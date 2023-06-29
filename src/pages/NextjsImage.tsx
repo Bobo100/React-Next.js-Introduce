@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { CommonPrism } from '../components/Common'
-import LocalImage from '../components/image-nextjs/locatImage'
+import LocalImage from '../components/image-nextjs/localImage'
 import RemoteImage from '../components/image-nextjs/remoteImage'
 import Layout from '../components/layout'
 function NextjsImage() {
