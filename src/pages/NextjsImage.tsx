@@ -3,6 +3,7 @@ import { CommonPrism } from '../components/Common'
 import LocalImage from '../components/image-nextjs/localImage'
 import RemoteImage from '../components/image-nextjs/remoteImage'
 import Layout from '../components/layout'
+import Image from 'next/image'
 function NextjsImage() {
     return (
         <Layout>
@@ -100,6 +101,8 @@ export default NextjsImage`}
 
             <p>當你使用了fill這個屬性時，parent請給予position: relative與display: block。</p>
 
+            <h2>讓Image可以在build的時候預先載入</h2>
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="Picture of the author" width={500} height={500} />    
         </Layout>
     )
 }

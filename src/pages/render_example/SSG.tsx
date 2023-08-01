@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Layout from '../../components/layout';
 import Head from 'next/head';
+import Image from 'next/image';
+import profilePic from '../../../public/images/profile.jpg';
 
 type Props = {
     content: string;
@@ -12,7 +14,7 @@ const SsgPage = ({ time, content }: Props) => {
     useEffect(() => {
         console.log("SSG Page");
     }, []);
-    
+
     return (
         <Layout>
             <Head>
@@ -23,6 +25,22 @@ const SsgPage = ({ time, content }: Props) => {
                 <p>{content}</p>
                 <p>build的時候的時間 {time}，因為這是SSG，所以這個時間不會再變動。</p>
             </div>
+            <h1>遠端圖片測試</h1>
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="Picture of the author" width={500} height={500} />
+            <h1>本地端圖片測試</h1>
+            <Image
+                src={profilePic}
+                alt="Picture of the author"
+                width={500}
+                height={500}
+            />
+            <h1>本地端圖片測試2</h1>
+            <Image
+                src="/images/profile.jpg"
+                alt="Picture of the author"
+                width={500}
+                height={500}
+            />
         </Layout>
 
     );

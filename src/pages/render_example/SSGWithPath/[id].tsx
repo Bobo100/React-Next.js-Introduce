@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Layout from '../../../components/layout';
 import Head from 'next/head';
 
+
 type Props = {
     content: string;
     time: string;
@@ -22,7 +23,7 @@ const SsgWithPathPage = ({ time, content }: Props) => {
                 <h1>SSG Page</h1>
                 <p>{content}</p>
                 <p>build的時候的時間 {time}，因為這是SSG，所以這個時間不會再變動。</p>
-            </div>
+            </div>           
         </Layout>
 
     );
