@@ -22,6 +22,6 @@ const CsrPage = () => {
 
 export default CsrPage;
 
-export const getServerSideProps = async () => {
-    return { props: {} };
-};
+// export const getServerSideProps = async () => {
+//     return { props: {} };
+// };
